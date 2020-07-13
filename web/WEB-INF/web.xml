@@ -10,6 +10,15 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>GameServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/game</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>servlets.MainServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 </web-app>

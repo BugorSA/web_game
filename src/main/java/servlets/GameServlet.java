@@ -5,11 +5,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class GameServlet extends HttpServlet {
@@ -34,13 +32,15 @@ public class GameServlet extends HttpServlet {
         s = bullCow.pushVersion(chars);
         req.setAttribute("answer", s);
         stringList.add(chars + ": " + s);
-        resp.sendRedirect("/");
+        resp.sendRedirect("/game");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        session.setAttribute("logs", stringList);
-            getServletContext().getRequestDispatcher("index.jsp").forward(req, resp);
+//        HttpSession session = req.getSession();
+//        session.setAttribute("logs", stringList);
+        req.setAttribute("logs", stringList);
+//        getServletContext().getRequestDispatcher("/game.jsp").forward(req, resp);
+        req.getRequestDispatcher("/game.jsp").forward(req, resp);
     }
 }
