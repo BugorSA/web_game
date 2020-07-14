@@ -24,7 +24,7 @@
             <input class="button" type="submit" value="Войти">
 
         </form>
-        <a href="registration.jsp">Зарегистрироваться</a>
+        <a href="registration">Зарегистрироваться</a>
     </div>
 </body>
 </html>

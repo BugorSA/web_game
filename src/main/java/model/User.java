@@ -29,8 +29,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String login, String password, ROLE role) {
-        this.id = id;
+    public User(String login, String password, ROLE role) {
         this.login = login;
         this.password = password;
         this.roles = Collections.singleton(role);

@@ -1,13 +1,9 @@
 package dao;
 
-import com.sun.istack.NotNull;
-import model.Client;
-import model.DVD;
 import model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Objects.nonNull;
