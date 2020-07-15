@@ -19,9 +19,20 @@ public class UserDAO {
         return user;
     }
 
+    public User getByLogin(String login){
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        List<User> users = (List<User>) session.createQuery("FROM User ").list();
+        User user1 = new User();
+        for (User user : users) {
+            if (user.getLogin().equals(login)) {
+                user1 = user;
+            }
+        }
+        session.close();
+        return user1;
+    }
 
     public void save(User user) {
-
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(user);
@@ -71,6 +82,14 @@ public class UserDAO {
         List<User> users = (List<User>) session.createQuery("FROM User ").list();
         session.close();
         return users;
+    }
+
+    public void update(User user) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(user);
+        transaction.commit();
+        session.close();
     }
 }
 

@@ -4,7 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,6 +19,17 @@ public class User {
 
     @Column(unique = true)
     private String login;
+
+    public List<Game> getGameList() {
+        return gameList;
+    }
+
+    public void setGameList(List<Game> gameList) {
+        this.gameList = gameList;
+    }
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Game> gameList;
 
     @Column
     private String password;
@@ -33,6 +46,12 @@ public class User {
         this.login = login;
         this.password = password;
         this.roles = Collections.singleton(role);
+        this.gameList = new ArrayList<>();
+    }
+
+    public void addGame(Game game){
+        game.setUser(this);
+        gameList.add(game);
     }
 
     public int getId() {

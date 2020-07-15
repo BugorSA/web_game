@@ -10,15 +10,18 @@
 <h1>Добро пожаловать в игру Бык-Корова</h1>
 <form method="post" action="hello">
     <ol class="rounded">
-        <li><a><label>
-        <input name="mainChoice" type="radio" value="new game" checked>
-        </label>Начать новую игру</a></li>
-        <li><a><label>
-            <input name="mainChoice" type="radio" value="stat">
-        </label>Статистика</a></li>
-        <li><a><label>
-            <input name="mainChoice" type="radio" value="exit">
-        </label>Выход</a></li>
+        <li><a><input name="mainChoice" type="radio" value="new game" checked>Начать новую игру</a></li>
+        <li><a><input name="mainChoice" type="radio" value="stat">Статистика</a></li>
+        <li><a><input name="mainChoice" type="radio" value="exit">Выход</a></li>
+<%--        <li><a><label>--%>
+<%--        <input name="mainChoice" type="radio" value="new game">--%>
+<%--        </label>Начать новую игру</a></li>--%>
+<%--        <li><a><label>--%>
+<%--            <input name="mainChoice" type="radio" value="stat">--%>
+<%--        </label></a></li>--%>
+<%--        <li><a><label>--%>
+<%--            <input name="mainChoice" type="radio" value="exit">--%>
+<%--        </label>Выход</a></li>--%>
         <input type="submit" name="go" value="Выбрать">
     </ol>
 </form>

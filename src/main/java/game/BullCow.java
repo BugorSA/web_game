@@ -1,4 +1,4 @@
-package main.java;
+package game;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,14 +8,17 @@ import java.util.Random;
 public class BullCow {
     private String guessed_number;
     private List<String> logs;
+    private boolean win;
 
     public BullCow() {
         logs = new ArrayList<String>(0);
+        win = false;
     }
 
     public BullCow(int i) {
         generatedNumber();
         logs = new ArrayList<String>(0);
+        win = false;
     }
 
     public void generatedNumber() {
@@ -54,12 +57,21 @@ public class BullCow {
                 }
             }
         }
-
+        if (bull_point == 4)
+            win = true;
         logs.add(bull_point + "Б" + cow_point + "К");
         return bull_point + "Б" + cow_point + "К";
     }
 
     public List<String> getLogs() {
         return logs;
+    }
+
+    public boolean isWin() {
+        return win;
+    }
+
+    public void setWin(boolean win) {
+        this.win = win;
     }
 }

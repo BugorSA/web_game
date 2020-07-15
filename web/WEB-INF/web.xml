@@ -54,4 +54,22 @@
         <url-pattern>/registration</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>WinServlet</servlet-name>
+        <servlet-class>servlets.WinServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WinServlet</servlet-name>
+        <url-pattern>/win</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StatServlet</servlet-name>
+        <servlet-class>servlets.StatServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StatServlet</servlet-name>
+        <url-pattern>/stat</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -24,8 +24,7 @@ public class MainServlet extends HttpServlet {
                 break;
             }
             case "stat":{// статистика
-                //req.setAttribute("clients", clientService.findAllClients());
-                //req.getRequestDispatcher("/allClients.jsp").forward(req, resp);
+                resp.sendRedirect("/stat");
                 break;
             }
             case "exit":{// побег
