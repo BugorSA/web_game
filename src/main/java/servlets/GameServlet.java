@@ -75,11 +75,11 @@ public class GameServlet extends HttpServlet {
 
     //проверка на кол-во цифр и их уникальность
     private boolean checkStr(String str) {
-        if (str.length() != 4) {
+        if (str.length() == 4) {
             char[] chars = str.toCharArray();
             int a = 0;
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
                     if (i != j) {
                         if (chars[i] == chars[j]) {
                             a++;
