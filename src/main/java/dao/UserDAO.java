@@ -10,15 +10,16 @@ import static java.util.Objects.nonNull;
 
 public class UserDAO {
 
-    public User getById(int id) {
+//    public User getById(int id) {
+//
+//        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+//        User user = session.get(User.class, id);
+//        session.close();
+//
+//        return user;
+//    }
 
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        User user = session.get(User.class, id);
-        session.close();
-
-        return user;
-    }
-
+    @SuppressWarnings("unchecked")
     public User getByLogin(String login){
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         List<User> users = (List<User>) session.createQuery("FROM User ").list();
@@ -40,6 +41,7 @@ public class UserDAO {
         session.close();
     }
 
+    @SuppressWarnings("unchecked")
     public User.ROLE getRoleByLoginPassword(final String login, final String password) {
         User.ROLE result = User.ROLE.UNKNOWN;
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
@@ -58,6 +60,7 @@ public class UserDAO {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
     public boolean userIsExist(final String login, final String password) {
 
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
@@ -77,6 +80,7 @@ public class UserDAO {
         return false;
     }
 
+    @SuppressWarnings("unchecked")
     public List<User> findAllUser() {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         List<User> users = (List<User>) session.createQuery("FROM User ").list();

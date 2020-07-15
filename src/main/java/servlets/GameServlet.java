@@ -23,7 +23,7 @@ public class GameServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init();
-        bullCow = new BullCow(0);
+        bullCow = new BullCow();
         stringList = new ArrayList<>(0);
     }
 
@@ -41,7 +41,7 @@ public class GameServlet extends HttpServlet {
             req.setAttribute("num", bullCow.getGuessed_number());
             winnerPost(req);
             stringList.clear();
-            bullCow = new BullCow(0);
+            bullCow = new BullCow();
             req.getRequestDispatcher("/win.jsp").forward(req, resp);
         } else {
             req.setAttribute("answer", s);

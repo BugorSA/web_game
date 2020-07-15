@@ -1,8 +1,5 @@
 package model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,10 +19,6 @@ public class User {
 
     public List<Game> getGameList() {
         return gameList;
-    }
-
-    public void setGameList(List<Game> gameList) {
-        this.gameList = gameList;
     }
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
@@ -54,10 +47,6 @@ public class User {
         gameList.add(game);
     }
 
-    public int getId() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -66,24 +55,16 @@ public class User {
         return login;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Set<ROLE> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<ROLE> roles) {
-        this.roles = roles;
+    public int getId() {
+        return id;
     }
 
     public enum ROLE {

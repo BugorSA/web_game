@@ -11,36 +11,28 @@ public class BullCow {
     private boolean win;
 
     public BullCow() {
-        logs = new ArrayList<String>(0);
-        win = false;
-    }
-
-    public BullCow(int i) {
         generatedNumber();
-        logs = new ArrayList<String>(0);
+        logs = new ArrayList<>(0);
         win = false;
     }
 
     public void generatedNumber() {
         Random random = new Random();
-        guessed_number = "";
-        HashSet<Integer> ints = new HashSet<Integer>(3);
-        int i = 0;
+        StringBuilder stringBuilder = new StringBuilder();
+        HashSet<Integer> ints = new HashSet<>(3);
+        int i;
         while (ints.size() != 4) {
             i = random.nextInt(9);
             ints.add(i);
         }
         for (Integer anInt : ints) {
-            guessed_number+=(String.valueOf(anInt));
+            stringBuilder.append(anInt);
         }
+        guessed_number = stringBuilder.toString();
     }
 
     public String getGuessed_number() {
         return guessed_number;
-    }
-
-    public void setGuessed_number(String guessed_number) {
-        this.guessed_number = guessed_number;
     }
 
     public String pushVersion(String s) {
@@ -69,9 +61,5 @@ public class BullCow {
 
     public boolean isWin() {
         return win;
-    }
-
-    public void setWin(boolean win) {
-        this.win = win;
     }
 }
