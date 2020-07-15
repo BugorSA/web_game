@@ -16,5 +16,12 @@
     </c:forEach>
 </ol>
 <a href="${pageContext.request.contextPath}/hello"> Вернуться в меню </a>
+<br> <br> Рейтинг игроков:
+<ol class="rounded">
+    <%--@elvariable id="listPlayer" type="java.util.List<java.lang.String>"--%>
+    <c:forEach var = "player" items="${listPlayer}">
+        <li><a><c:out value="${player}"/></a></li>
+    </c:forEach>
+</ol>
 </body>
 </html>

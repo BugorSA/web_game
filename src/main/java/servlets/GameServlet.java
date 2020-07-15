@@ -57,10 +57,7 @@ public class GameServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        HttpSession session = req.getSession();
-//        session.setAttribute("logs", stringList);
         req.setAttribute("logs", stringList);
-//        getServletContext().getRequestDispatcher("/game.jsp").forward(req, resp);
         req.getRequestDispatcher("/game.jsp").forward(req, resp);
     }
 

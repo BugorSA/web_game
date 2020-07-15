@@ -14,6 +14,8 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/index.jsp</url-pattern>
         <url-pattern>/game.jsp</url-pattern>
+        <url-pattern>/stat.jsp</url-pattern>
+        <url-pattern>/win.jsp</url-pattern>
     </filter-mapping>
 
     <!--Logout servlet-->
