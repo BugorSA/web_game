@@ -35,18 +35,23 @@ public class GameServlet extends HttpServlet {
         chars += req.getParameter("select3");
         chars += req.getParameter("select4");
         String s;
-        s = bullCow.pushVersion(chars);
-        if (bullCow.isWin()) {
-            req.setAttribute("try", bullCow.getLogs().size());
-            req.setAttribute("num", bullCow.getGuessed_number());
-            winnerPost(req);
-            stringList.clear();
-            bullCow = new BullCow();
-            req.getRequestDispatcher("/win.jsp").forward(req, resp);
-        } else {
-            req.setAttribute("answer", s);
-            stringList.add(chars + ": " + s);
+        if (!checkStr(chars)) {
+            stringList.add("Нужно ввести 4 разные цифры");
             resp.sendRedirect("/game");
+        } else {
+            s = bullCow.pushVersion(chars);
+            if (bullCow.isWin()) {
+                req.setAttribute("try", bullCow.getLogs().size());
+                req.setAttribute("num", bullCow.getGuessed_number());
+                winnerPost(req);
+                stringList.clear();
+                bullCow = new BullCow();
+                req.getRequestDispatcher("/win.jsp").forward(req, resp);
+            } else {
+                req.setAttribute("answer", s);
+                stringList.add(chars + ": " + s);
+                resp.sendRedirect("/game");
+            }
         }
     }
 
@@ -66,5 +71,23 @@ public class GameServlet extends HttpServlet {
         User user = dao.getByLogin(String.valueOf(session.getAttribute("login")));
         user.addGame(game);
         dao.update(user);
+    }
+
+    //проверка на кол-во цифр и их уникальность
+    private boolean checkStr(String str) {
+        if (str.length() != 4) {
+            char[] chars = str.toCharArray();
+            int a = 0;
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    if (i != j) {
+                        if (chars[i] == chars[j]) {
+                            a++;
+                        }
+                    }
+                }
+            }
+            return (a == 0);
+        } else return false;
     }
 }

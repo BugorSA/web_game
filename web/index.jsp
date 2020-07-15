@@ -13,8 +13,8 @@
         <li><a><input name="mainChoice" type="radio" value="new game" checked>Начать новую игру</a></li>
         <li><a><input name="mainChoice" type="radio" value="stat">Статистика</a></li>
         <input type="submit" name="go" value="Выбрать">
-        <a href="<c:url value="/logout"/>">Logout</a>
     </ol>
+    <a href="<c:url value="/logout"/>">Logout</a>
 </form>
 </body>
 </html>
