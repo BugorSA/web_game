@@ -12,17 +12,8 @@
     <ol class="rounded">
         <li><a><input name="mainChoice" type="radio" value="new game" checked>Начать новую игру</a></li>
         <li><a><input name="mainChoice" type="radio" value="stat">Статистика</a></li>
-        <li><a><input name="mainChoice" type="radio" value="exit">Выход</a></li>
-<%--        <li><a><label>--%>
-<%--        <input name="mainChoice" type="radio" value="new game">--%>
-<%--        </label>Начать новую игру</a></li>--%>
-<%--        <li><a><label>--%>
-<%--            <input name="mainChoice" type="radio" value="stat">--%>
-<%--        </label></a></li>--%>
-<%--        <li><a><label>--%>
-<%--            <input name="mainChoice" type="radio" value="exit">--%>
-<%--        </label>Выход</a></li>--%>
         <input type="submit" name="go" value="Выбрать">
+        <a href="<c:url value="/logout"/>">Logout</a>
     </ol>
 </form>
 </body>
