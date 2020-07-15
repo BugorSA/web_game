@@ -21,6 +21,7 @@ public class User {
         return gameList;
     }
 
+    //История игр
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Game> gameList;
 

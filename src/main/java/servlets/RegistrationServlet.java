@@ -20,7 +20,7 @@ public class RegistrationServlet extends HttpServlet {
         User user = new User(login, password, role);
         UserDAO userDAO = new UserDAO();
         List<User> users = userDAO.findAllUser();
-        boolean b = true; //проверка повотроения
+        boolean b = true; //проверка на существование акк
         for (User usr :
                 users) {
             if (usr.getLogin().equals(user.getLogin())) {

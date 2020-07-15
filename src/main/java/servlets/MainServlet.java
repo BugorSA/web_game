@@ -14,10 +14,8 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String choice = req.getParameter("mainChoice");
-        //ClientService clientService = new ClientService();
         switch (choice) {
             case "new game": {// новая игра
-//                req.getRequestDispatcher("/game.jsp").forward(req, resp);
                 resp.sendRedirect("/game");
                 break;
             }

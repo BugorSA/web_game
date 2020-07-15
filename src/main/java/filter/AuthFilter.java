@@ -65,11 +65,8 @@ public class AuthFilter implements Filter {
         }
     }
 
-    /**
-     * Move user to menu.
-     * If access 'admin' move to admin menu.
-     * If access 'user' move to user menu.
-     */
+
+    //
     private void moveToMenu(final HttpServletRequest req,
                             final HttpServletResponse res,
                             final User.ROLE role)

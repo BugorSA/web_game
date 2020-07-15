@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static java.util.Objects.nonNull;
 
@@ -30,26 +28,23 @@ public class StatServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final HttpSession session = req.getSession();
+        //рейтинг игроков
         List<User> users = userDAO.findAllUser();
         List<String> list = new ArrayList<>();
-        float average;
-        for (User user1: users
-             ) {
-            average = 0;
-            int count = 0;
-            if (nonNull(user1.getGameList())) {
-                for (Game game : user1.getGameList()) {
-                    count++;
-                    average += game.getNum_try();
-                }
-                average = average / count;
-            }
-            list.add(user1.getLogin() + ": " + average);
+        for (User user1 : users) {
+            list.add(user1.getLogin() + ": " + Average(user1));
         }
         req.setAttribute("listPlayer", list);
+        //история побед
         User user = userDAO.getByLogin(String.valueOf(session.getAttribute("login")));
         req.setAttribute("stats", user.getGameList());
-        average = 0;
+        req.setAttribute("average", Average(user));
+        req.getRequestDispatcher("/stat.jsp").forward(req, resp);
+    }
+
+    //находит среднее кол-во ходов до выйгрыша
+    private float Average(User user) {
+        float average = 0;
         int count = 0;
         if (nonNull(user.getGameList())) {
             for (Game game : user.getGameList()) {
@@ -58,7 +53,6 @@ public class StatServlet extends HttpServlet {
             }
             average = average / count;
         }
-        req.setAttribute("average", average);
-        req.getRequestDispatcher("/stat.jsp").forward(req, resp);
+        return average;
     }
 }

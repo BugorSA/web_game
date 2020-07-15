@@ -16,6 +16,7 @@ public class BullCow {
         win = false;
     }
 
+    //генератор случайного числа
     public void generatedNumber() {
         Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder();
@@ -35,6 +36,7 @@ public class BullCow {
         return guessed_number;
     }
 
+    //ответ на комбинацию
     public String pushVersion(String s) {
         char[] vn = s.toCharArray();
         char[] gn = guessed_number.toCharArray();

@@ -35,12 +35,12 @@ public class GameServlet extends HttpServlet {
         chars += req.getParameter("select3");
         chars += req.getParameter("select4");
         String s;
-        if (!checkStr(chars)) {
+        if (!checkStr(chars)) { //проверка введенных данных
             stringList.add("Нужно ввести 4 разные цифры");
             resp.sendRedirect("/game");
         } else {
             s = bullCow.pushVersion(chars);
-            if (bullCow.isWin()) {
+            if (bullCow.isWin()) { //проверка на выйгрышную комбинацию
                 req.setAttribute("try", bullCow.getLogs().size());
                 req.setAttribute("num", bullCow.getGuessed_number());
                 winnerPost(req);
@@ -61,6 +61,7 @@ public class GameServlet extends HttpServlet {
         req.getRequestDispatcher("/game.jsp").forward(req, resp);
     }
 
+    //добавление результатов игры в БД
     private void winnerPost(HttpServletRequest req) {
         Game game = new Game(bullCow.getLogs().size());
         UserDAO dao = new UserDAO();
